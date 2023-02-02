@@ -58,7 +58,10 @@ const Navbar = (props: Props) => {
                 <span className="font-bold">DigiBart</span>
               </Link>
             </div>
-
+                  
+            <Link href="/login" className="py-5 px-3" onClick={signOut}>
+                          Logout
+                        </Link>
             <div className="hidden md:flex items-center space-x-1">
               <Link
                 href="/dashboard"

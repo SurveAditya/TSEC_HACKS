@@ -16,13 +16,17 @@ const Register = (props: Props) => {
   // const [password2, setPassword2] = useState("");
   const [name, setName] = useState("");
   const[city,setCity] = useState("")
+  const[phoneNumber,setPhoneNumber] = useState("")
+  const[noOfTransactions,setNoOfTransactions] = useState("")
+  const[reported,setReported] = useState("")
+
 
   const submitHandler = async (e:any) => {
     e.preventDefault();
     // console.log(email, password, password2, name);
     try{
         const {data} = await  axios.post('/api/register', {
-          name,email, password
+          name, email, password, phoneNumber, city
         })
         console.log(data);
     }catch(error){

@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema({
         unique:true,
     },
     password :String,
+    phoneNumber :String,
+    city :String,
+    
 });
 userSchema.pre("save", async function (next) {
     if(!this.isModified("password")){
