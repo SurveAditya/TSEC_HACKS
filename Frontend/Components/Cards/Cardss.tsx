@@ -94,10 +94,9 @@ const Cardss = (props: any) => {
     <div>
       <article
         onClick={() => router.push(`/blog/${blog?.id}`)}
-        className="card-zoom p-3 md:p-6 cursor-pointer bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 md:min-w-[450px]"
-      >
-        <div className="flex justify-between items-center mb-5 text-gray-500">
-          <div className="flex items-center space-x-2">
+        className="card-zoom p-3 md:p-6 cursor-pointer bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ">
+        <div className="flex justify-between mb-5 text-gray-500">
+          <div className="flex items-center  space-x-2">
             <span className="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
               <svg
                 className="mr-1 w-3 h-3"

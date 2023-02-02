@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal } from '@material-ui/core'
 type Props = {}
 
-const Model = (props: Props) => {
+const Modal = (props: Props) => {
     const [open, setOpen] = React.useState(false);
   
     const handleClose = () => {
@@ -32,4 +32,4 @@ const Model = (props: Props) => {
   )
 }
 
-export default Model
+export default Modal
