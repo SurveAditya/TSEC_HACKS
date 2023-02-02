@@ -31,16 +31,15 @@ export default function Home() {
   return (
     <main className={styles.main} >
       {/* <form></form> */}
-      <div className='bg-gray-100 dark:bg-gray-900 w-full h-full'>
-        <motion.div  initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5 }} className='flex flex-row space-x-10 p-10'>
+    
+        <div  className='flex flex-row overflow-hidden space-x-10 p-10'>
         <Card/>
         <Card/>
         <Card/>
         <Card/>
-        </motion.div>
-      </div>
+          
+        </div>
+     
     </main>
   )
 }
