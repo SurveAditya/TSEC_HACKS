@@ -4,7 +4,9 @@ type Props = {}
 
 const Cards = (props: Props) => {
   return (
-
+<div  className="card-zoom w-full lg:max-w-full lg:flex dark:bg-gray-800 dark:border-gray-700"
+      // onClick={(e) => handleClick(e, blog.title)}
+    >
 <article   className="overflow-hidden rounded-lg shadow-lg">
 
     <a href="#">
@@ -33,7 +35,8 @@ const Cards = (props: Props) => {
        
     </footer>
 
-</article>
+      </article>
+      </div>
   )
 }
 
