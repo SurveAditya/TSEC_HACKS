@@ -40,12 +40,12 @@ const Navbar = (props: Props) => {
   // add event listners
 
   return (
-    <nav className="bg-gray-100 dark:bg-gray-900 sticky top-0 z-50">
-      <div className="xl:max-w-6xl mx-auto px-4">
+    <nav className="bg-[#25495c]  dark:bg-gray-900 sticky top-0 z-50">
+      <div className="xl:max-w-6xl mx-auto pt-0 px-4 h-20">
         <div className="flex justify-between">
           <div className="flex space-x-4">
             <div>
-              <Link href="/" className="flex items-center py-5  text-gray-700">
+              <Link href="/" className="flex items-center py-2 v7f text-white">
                 <motion.div
                   animate={{
                     scale: [1, 2, 2, 1, 1],
@@ -55,55 +55,65 @@ const Navbar = (props: Props) => {
                 >
                  <WiAlien className="text-6xl  dark:text-blue-500"/>
                 </motion.div>
-                <span className="font-bold">Better Dev</span>
+                <span className="font-bold">DigiBart</span>
               </Link>
             </div>
 
             <div className="hidden md:flex items-center space-x-1">
               <a
                 href=""
-                className="py-5 px-3 text-gray-700 hover:text-gray-900"
+                className="py-5 px-3 ml-10 text-white hover:text-xl transition-all duration-500 "
               >
-                Features
+                Dashboard
               </a>
-              <a
+              {/* <a
                 href=""
                 className="py-5 px-3 text-gray-700 hover:text-gray-900"
               >
-                Pricing
-              </a>
+                
+              </a> */}
             </div>
           </div>
 
           <div className="hidden md:flex items-center space-x-1">
-            <button
-              onClick={clickHandler}
-              className="py-2 px-3 bg-black-400 hover:bg-white dark:bg-black text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
-            >
-              {currTheme === "dark" ? <FaMoon/>:<FaSun/>}
-            </button>
-            {data?.user ? (
-              <div className="flex flex-row items-center ">
-              <h1> {data.user.name}</h1>
-              <Link href="/login" className="py-5 px-3" onClick={signOut}>
-                Logout
-              </Link>
-              
-              </div>
-            ) : (
-              <>
-                <Link href="/login" className="py-5 px-3">
-                  Login
-                </Link>
-
-                <Link
-                  href="/register"
-                  className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
+          {/* right side */}
+                {/* <h1 className="text-white"> {data.user.name}</h1> */}
+                <button
+                  onClick={clickHandler}
+                  className="py-2 px-3 bg-black-400 hover:bg-white dark:bg-black text-sky-400 hover:text-white-800 rounded transition duration-500 border-white border-2"
                 >
-                  Signup
-                </Link>
-              </>
-            )}
+                  {currTheme === "dark" ? <FaMoon/>:<FaSun/>}
+                </button>
+
+                <div className="relative inline-block hover:bg-pink ">
+                      <img src="https://www.w3schools.com/w3images/avatar6.png" className="border-white border-2 cursor-pointer h-10 w-10 rounded-full ml-10"></img>
+                      <div className="hidden absolute  z-1"> 
+                      {data?.user ? (
+                        <div className="flex flex-row items-center ">
+                      
+                        <Link href="/login" className="py-5 px-3" onClick={signOut}>
+                          Logout
+                        </Link>
+                    
+                        </div>
+                        
+                      ) : (
+                        <>
+                          <Link href="/login" className="py-5 px-3">
+                            Login
+                          </Link>
+
+                          <Link
+                            href="/register"
+                            className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
+                          >
+                            Signup
+                          </Link>
+                        </>
+                      )}
+
+                </div>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center">
