@@ -330,7 +330,24 @@ router.post("/trade", async (req, res) => {
       });
     
 
-
+//input find userid by email
+router.post("/findUserByEmail", async (req, res) => {
+  try{
+    const user = await User.findOne({ email: req.body.userEmail });
+    res.send({
+      message: "User fetched successfully",
+      success: true,
+      data:user._id,
+    });
+  }
+  catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+      data: null,
+    });
+  }
+  });
 
 
 
