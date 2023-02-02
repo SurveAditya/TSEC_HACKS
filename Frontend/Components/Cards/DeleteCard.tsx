@@ -1,5 +1,4 @@
 "use client";
-import Blog from "@/types/Blog";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { title } from "process";

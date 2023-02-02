@@ -14,8 +14,8 @@ export default function DashboardLayout({
   const [userImage, setUserImage] = useState(
     ""
   );
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState< string | null | undefined>("");
+  const [userEmail, setUserEmail] = useState< string | null | undefined>("");
   const [active, setActive] = useState(1);
   const [postCount, setPostCount] = useState(0);
 
@@ -66,9 +66,9 @@ export default function DashboardLayout({
   return (
     <div className="max-w-[1420px] mx-auto flex flex-col justify-center items-center p-4">
       <UserCard
-        userImage={"https://api.multiavatar.com/" + data.user?.name+ ".svg"}
-        userName={data.user?.name}
-        userEmail:String ={data?.user?.email}
+        userImage={"https://api.multiavatar.com/" + data?.user?.name+ ".svg"}
+        userName  ={data?.user?.name}
+        userEmail ={data?.user?.email}
         postCount={100}
       />
 

@@ -14,16 +14,19 @@ const Profile = (props: Props) => {
   const userId = "PrateekID";
   const name = window.location.href.split("/")[4];
   
-  const blogs = [
+  const product = [
     {
-      img: Mountain.src,
-      isMemberOnly: true,
-      title: "Best Mountain Trails 2020",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      img: "https://apollo-singapore.akamaized.net/v1/files/3mlqffyra3423-IN/image;s=780x0;q=60",
+      isMemberOnly: false,
+      title: "15 Games XBOX ONE 1TB Black Colour Brand new Condition Good working 1",
+      desc: "15 Games XBOX ONE 1TB Black Colour Brand new Condition Good working 2 Year old With Original wireless controller 1 And All cables Games are inside Good working Fixed price",
       autherImg:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
-      autherName: "John Smith",
+      autherName: "Vaibhav Gawad",
       dateOfPost: "Aug 18",
+      rangeStart: 0,
+      rangeEnd: 10,
+      pid:"12312312"
     },
     {
       img: River.src,
@@ -34,6 +37,9 @@ const Profile = (props: Props) => {
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       autherName: "Karen Johnson",
       dateOfPost: "Aug 10",
+      rangeStart: 0,
+      rangeEnd: 10,
+      pid:"1231231212"
     },
     {
       img: Mountain.src,
@@ -44,6 +50,9 @@ const Profile = (props: Props) => {
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       autherName: "John Smith",
       dateOfPost: "Aug 18",
+      rangeStart: 10,
+      rangeEnd: 20,
+      pid:"123121231232"
     },
     {
       img: River.src,
@@ -54,6 +63,9 @@ const Profile = (props: Props) => {
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
       autherName: "Karen Johnson",
       dateOfPost: "Aug 10",
+      rangeStart: 10,
+      rangeEnd: 122,
+      pid:"22312312"
     },
   ];
   return (
@@ -102,8 +114,8 @@ const Profile = (props: Props) => {
         <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* <!--Card 1--> */}
 
-          {blogs &&
-            blogs?.map((blog, id) => {
+          {product &&
+            product?.map((blog, id) => {
               return <Cards key={id} blog={blog} />;
             })}
         </div>
