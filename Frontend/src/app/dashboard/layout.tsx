@@ -40,10 +40,14 @@ export default function DashboardLayout({
     }
 
     if (path.includes("intrested")) {
-      setActive(2);
+      setActive(1);
     }
     if (path.includes("mylist")) {
       setActive(1);
+    }
+
+    if (path.includes("myblogs")) {
+      setActive(2);
     }
   }, []);
 
@@ -117,6 +121,61 @@ export default function DashboardLayout({
               Intersted Users
             </Link>
           </li>
+          <li className="mr-2">
+            <Link
+              onClick={() => setActive(3)}
+              href="/dashboard/myorders"
+              className={`inline-flex p-4 border-b-2 rounded-t-lg group ${
+                active == 3
+                  ? activeStyle
+                  : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+              }`}
+              aria-current="page"
+            >
+              <svg
+                aria-hidden="true"
+                className={`w-5 h-5 mr-2 ${
+                  active == 2
+                    ? "text-blue-600 dark:text-blue-500"
+                    : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+                }`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+              </svg>
+              Orders Placed
+            </Link>
+          </li>
+          <li className="mr-2">
+            <Link
+              onClick={() => setActive(4)}
+              href="/dashboard/myrequest"
+              className={`inline-flex p-4 border-b-2 rounded-t-lg group ${
+                active == 4
+                  ? activeStyle
+                  : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+              }`}
+              aria-current="page"
+            >
+              <svg
+                aria-hidden="true"
+                className={`w-5 h-5 mr-2 ${
+                  active == 2
+                    ? "text-blue-600 dark:text-blue-500"
+                    : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+                }`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+              </svg>
+              My Requests
+            </Link>
+          </li>
+
         </ul>
       </div>
 

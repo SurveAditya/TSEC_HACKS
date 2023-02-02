@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "components/Cards/Cards";
 type Props = {};
 
-const Bookmarked = (props: Props) => {
+const MyRequest = (props: Props) => {
   const [userEmail, setUserEmail] = useState("");
   const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
  
@@ -67,11 +67,11 @@ const Bookmarked = (props: Props) => {
       <div className="py-2 px-4 mx-auto max-w-screen-xl lg:py-2 lg:px-6">
         <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
           <h1 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Interested Users
+            My Request Users
           </h1>
           <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Welcome to our bookmarked blog section! Here you'll find all the
-            Products intrsted to tred with your product.
+            Welcome to our Request section! Here you'll find all the
+            People Requested against you to tred with your product.
           </p>
         </div>
         <div className="grid gap-8 lg:grid-cols-2">
@@ -87,4 +87,4 @@ const Bookmarked = (props: Props) => {
   );
 };
 
-export default Bookmarked;
+export default MyRequest;
