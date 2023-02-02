@@ -2,7 +2,7 @@
 import Mountain from "../../../../assets/mountain.jpg";
 import River from "../../../../assets/river.jpg";
 import React, { useEffect, useState } from "react";
-import Cards from "components/Cards/Cards";
+import DecisionPending from "Components/Cards/DecisionPending";
 type Props = {};
 
 const MyRequest = (props: Props) => {
@@ -79,7 +79,7 @@ const MyRequest = (props: Props) => {
 
           {blogs &&
             blogs?.map((blog, id) => {
-              return <Cards key={id} blog={blog} />;
+              return <DecisionPending key={id} blog={blog} />;
             })}
         </div>
       </div>

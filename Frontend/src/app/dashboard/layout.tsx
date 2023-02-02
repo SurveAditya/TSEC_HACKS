@@ -1,18 +1,21 @@
 "use client";
-import UserCard from "components/UserCard";
+import UserCard from "Components/UserCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 export default function DashboardLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
 }) {
+  const {data} = useSession();
+  console.log(data)
   const [userImage, setUserImage] = useState(
     ""
   );
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState< string | null | undefined>("");
+  const [userEmail, setUserEmail] = useState< string | null | undefined>("");
   const [active, setActive] = useState(1);
   const [postCount, setPostCount] = useState(0);
 
@@ -39,15 +42,22 @@ export default function DashboardLayout({
       setUserEmail(usrEmail);
     }
 
+    if (path.includes("")) {
+      setActive(1);
+    }
+
     if (path.includes("intrested")) {
       setActive(1);
     }
     if (path.includes("mylist")) {
-      setActive(1);
+      setActive(2);
     }
 
-    if (path.includes("myblogs")) {
-      setActive(2);
+    if (path.includes("myorders")) {
+      setActive(3);
+    }
+    if (path.includes("myrequest")) {
+      setActive(4);
     }
   }, []);
 
@@ -56,10 +66,10 @@ export default function DashboardLayout({
   return (
     <div className="max-w-[1420px] mx-auto flex flex-col justify-center items-center p-4">
       <UserCard
-        userImage={userImage}
-        userName={userName}
-        userEmail={userEmail}
-        postCount={postCount}
+        userImage={"https://api.multiavatar.com/" + data?.user?.name+ ".svg"}
+        userName  ={data?.user?.name}
+        userEmail ={data?.user?.email}
+        postCount={100}
       />
 
       <div className="mt-12 border-b border-gray-200 dark:border-gray-700">

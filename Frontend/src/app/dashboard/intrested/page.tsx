@@ -2,7 +2,7 @@
 import Mountain from "../../../../assets/mountain.jpg";
 import River from "../../../../assets/river.jpg";
 import React, { useEffect, useState } from "react";
-import Cards from "components/Cards/Cards";
+import AcceptCard from "Components/Cards/AcceptCard";
 type Props = {};
 
 const Bookmarked = (props: Props) => {
@@ -10,15 +10,15 @@ const Bookmarked = (props: Props) => {
   const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
  
   
-  const blogs = [
+  const product = [
     {
       img: Mountain.src,
-      isMemberOnly: true,
+      isMemberOnly: false,
       title: "Best Mountain Trails 2020",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.",
       autherImg:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
-      autherName: "John Smith",
+      autherName: "Vaibhav Gawad",
       dateOfPost: "Aug 18",
     },
     {
@@ -27,7 +27,7 @@ const Bookmarked = (props: Props) => {
       title: "15 Rivers In Norway",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, Nonea! Maiores et perferendis eaque, exercitationem praesentium nihil.",
       autherImg:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80",
+        "",
       autherName: "Karen Johnson",
       dateOfPost: "Aug 10",
     },
@@ -52,7 +52,6 @@ const Bookmarked = (props: Props) => {
       dateOfPost: "Aug 10",
     },
   ];
-
   useEffect(() => {
     if (userEmail.length > 0) {
       fetch(`/api/user/bookmark?userEmail=${userEmail}`)
@@ -77,9 +76,9 @@ const Bookmarked = (props: Props) => {
         <div className="grid gap-8 lg:grid-cols-2">
           {/* <!--Card 1--> */}
 
-          {blogs &&
-            blogs?.map((blog, id) => {
-              return <Cards key={id} blog={blog} />;
+          {product &&
+            product?.map((blog, id) => {
+              return <AcceptCard key={id} blog={blog} />;
             })}
         </div>
       </div>

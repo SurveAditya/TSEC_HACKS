@@ -60,12 +60,12 @@ const Navbar = (props: Props) => {
             </div>
 
             <div className="hidden md:flex items-center space-x-1">
-              <a
-                href=""
-                className="py-5 px-3 ml-10 text-white hover:text-xl transition-all duration-500 "
+              <Link
+                href="/dashboard"
+                className="py-5 px-3 ml-10 text-white hover:text-xl transition-all  "
               >
                 Dashboard
-              </a>
+              </Link>
               {/* <a
                 href=""
                 className="py-5 px-3 text-gray-700 hover:text-gray-900"
