@@ -21,6 +21,14 @@ const userSchema = new mongoose.Schema(
     city: {
       type: String,
       required: true,
+    },
+    noOfTransactions: {
+      type: Number,
+      default: 0,
+    },
+    reported: {
+      type: Number,
+      default:0
     }
   },
   {
