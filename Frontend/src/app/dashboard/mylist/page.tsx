@@ -3,14 +3,17 @@ import Mountain from "../../../../assets/mountain.jpg";
 import River from "../../../../assets/river.jpg";
 import React, { useEffect, useState } from "react";
 import Cards from "Components/Cards/Cards";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+
+
 type Props = {};
 
-const MyList = (props: Props) => {
+const  MyList = (props: Props) => {
   const [userEmail, setUserEmail] = useState("");
-  const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
- 
+  const [product, setProduct] = useState([]);
   
-  const product = [
+  const products = [
     {
       img: Mountain.src,
       isMemberOnly: false,
@@ -53,15 +56,26 @@ const MyList = (props: Props) => {
     },
   ];
 
-  useEffect(() => {
-    if (userEmail.length > 0) {
-      fetch(`/api/user/bookmark?userEmail=${userEmail}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setBookmarkedBlogs(data);
+  const { data } = useSession();
+  
+  
+  const handleSubmit = async (e: any) => {
+    
+    const email = data?.user?.email;
+    // console.log(emaill);
+    const vaibhav = await axios.post("http://localhost:5000/users/findUserByEmail",{userEmail: email});
+    // console.log(vaibhav.data.data);
+    console.log("vaibhav" ,vaibhav);
+    const dataa = await  axios.post("http://localhost:5000/users/getProductsById",{
+     
+        userId: vaibhav.data.data,
+        
         });
-    }
-  }, [userEmail]);
+    // console.log("vaibhaasdfv" ,dataa.data.data);
+    setProduct(dataa.data.data);
+  };
+  
+  
   return (
     <section className="bg-white dark:bg-gray-900 max-w-[1420px] mx-auto flex justify-between items-center p-4 mt-12">
       <div className="py-2 px-4 mx-auto max-w-screen-xl lg:py-2 lg:px-6">
@@ -82,6 +96,7 @@ const MyList = (props: Props) => {
             })}
         </div>
       </div>
+      <button onClick={handleSubmit}>Hello</button>
     </section>
   );
 };

@@ -351,7 +351,23 @@ router.post("/findUserByEmail", async (req, res) => {
 
 
 
-
+// get product by product id
+router.post("/getProductBypId", async (req, res) => {
+  try{
+    const product = await Product.findOne({_id: req.body.pId });
+    res.send({
+      message: "Product fetched successfully",
+      success: true,
+      data:product,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+      data: null,
+    });
+  }
+  });
     
 
 

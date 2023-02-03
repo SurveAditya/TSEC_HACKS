@@ -1,11 +1,16 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 // import Modal from '@material-ui/core/Modal';
 import { Modal } from '@material-ui/core'
 import { useRouter } from 'next/navigation'
 
-type Props = {}
+type Props = {
+  product: any
+}
 const Prodcard = (props: Props) => {
+  // const [data, setData] =  useState([]);
+  //   setData(props?.product);
+    console.log(props?.product);
     const [open, setOpen] = React.useState(false);
     const router =  useRouter();
     const id = '123123'
@@ -18,7 +23,7 @@ const Prodcard = (props: Props) => {
   };
 
   const handleClick=()=>{
-    router.push(`/product/${id}`)
+    router.push(`/product/${props?.product._id}`)
   }
 
   return (
@@ -28,23 +33,23 @@ const Prodcard = (props: Props) => {
         <article  onClick={handleClick} className="overflow-hidden rounded-lg shadow-lg w-80 h-96 ml-10 mb-20">
 
     <a href="#">
-        <img alt="Placeholder" className="block h-48 w-full" src="https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBob25lfGVufDB8fDB8fA%3D%3D&w=1000&q=80"/>
+        <img alt="Placeholder" className="block h-48 w-full" src={props.product.images[0] === undefined ? ' ' :props.product.images[0] }/>
     </a>
 
     <header className="flex flex-col  justify-between leading-tight font-bold   text-[#25495c] p-2 md:p-4">
         <h1 className="text-lg">
             <a className=" no-underline hover:underline " href="#">
-              Phone
+              {props?.product.productname}
             </a>
         </h1>
               <p className='py-2'>
-                  Phone is 5 years old, and it's in a good working condition
+                  {props?.product.description}
         </p>
     </header>
 
     <footer className="flex flex-col items-center  justify-between  leading-none ">
         <a className="flex items-center pb-2 no-underline hover:underline text-black" href="#">
-           <span className='font-bold  text-lg text-[#25495c] '>Range: </span><p className='text-[#25495c] '> Rs.10,000-Rs.15,000 </p>
+           <span className='font-bold  text-lg text-[#25495c] '>Range: </span><p className='text-[#25495c] '> Rs.{props?.product.range[0]}-Rs.{props?.product.range[1]} </p>
               </a>
               
               <a className="flex items-center no-underline hover:underline text-black" href="#">

@@ -3,21 +3,31 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import ImageUploading from 'react-images-uploading';
+import { Uploader } from "uploader"; // Installed by "react-uploader".
+import { UploadButton } from "react-uploader";
 
 type Props = {};
 
 const Add = (props: Props) => {
+
+
+  const uploader = Uploader({
+    apiKey: "free" // Get production API keys from Upload.io
+  });
+  
+  // Configuration options: https://upload.io/uploader#customize
+  const options = { multi: true };
+
   const [productname, setName] = useState("Vaibhav");
   const [description, setDescription] = useState("dumb kid");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
   const range:any = [minValue, maxValue]; 
-  const [images, setImages] = useState([
-    "https://cloudinary.com/console/c-9d669a100a82c92140231bc31d7ba1/media_library/folders/c20eb2e21d89602b8d5a850dcc3d3bb6c8",
-  ]);
+  const images:string[] = [];
   const [category, setCategory] = useState("");
   const [userId, setUserId] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState<number>(10);
   const [data, setData] = useState({
     productname: productname,
     userIds: userId,
@@ -29,64 +39,56 @@ const Add = (props: Props) => {
   });
 
   const a = useSession();
-  console.log(a);
+  // console.log(a);
   // useEffect(() => {
   //   const uploadRes = await axios.post(
   //           "https://api.cloudinary.com/v1_1/drfxcmd66/image/upload",
   //           data
   //         );
   // }, [])
-  
 
-  useEffect(() => {}, []);
 
   const handleSubmit = async (e: any) => {
+
+   
+
     range[0] = minValue;
     range[1] = maxValue;
     // console.log(productname, userId, range, images, description, category, price);
-    setData({
-      productname: productname,
-      userIds: userId,
-      ranges: range,
-      imagess: images,
-      descriptions: description,
-      categorys: category,
-      prices: price,
     
-     
-    
-    });
     e.preventDefault();
     const emaill = a?.data?.user?.email;
-    const getid = await axios.post("http://localhost:5000/users/findUserByEmail",{email: emaill});
-    console.log(getid);
+    // console.log(emaill);
+    const vaibhav = await axios.post("http://localhost:5000/users/findUserByEmail",{userEmail: emaill});
+    console.log(vaibhav.data.data);
+    // console.log(data);
+
+    setData({
+      productname: productname,
+      userId: vaibhav.data.data,
+      range: range,
+      images: images,
+      description: description,
+      category: category,
+      price: price,
+
+    });
+    
   
+
+
+    const uploadRes = await axios.post("http://localhost:5000/users/addProduct", data)
+    .then ((res) => {
+      console.log(res.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
 
 
   };
 
-
-    // const uploadRes = await axios.post("http://localhost:5000/users/addProduct", data)
-    // .then ((res) => {
-    //   console.log(res.data)
-    // })
-    // .catch((err) => {
-    //   console.log(err)
-    // })
-
- 
-
-
-    // const uploadRes = axios.post("http://localhost/5000/users/addProduct",
-    //   data)
-    //   uploadRes.then((res) => {
-    //     console.log(res.data)
-    //   }
-    //   )
-    //   .catch((err) => {
-    //     console.log(err)
-    //   }
-    //   )
 
   return (
     <div>
@@ -161,13 +163,15 @@ const Add = (props: Props) => {
           </div>
 
           <div className="form-control pb-6">
-            <label>
-              {" "}
-              <span className="block text-[#25495c]">
-                Upload the Image of the product
-              </span>
-              <input className="form-input" type="file" placeholder="Image" />
-            </label>
+          <UploadButton uploader={uploader}
+                options={options}
+                onComplete={files => files.map(x => images.push(x.fileUrl)).join("\n")}>
+    {({onClick}) =>
+      <button onClick={onClick}>
+        Upload a file...
+      </button>
+    }
+  </UploadButton>
           </div>
           <div className="form-contol">
             <label htmlFor="category">
@@ -177,7 +181,7 @@ const Add = (props: Props) => {
                 name="category"
                 className="border-2"
                 onChange={(e) => {
-                  setCategory(e.target.value);
+          setCategory(e.target.value);
                 }}
               >
                 <option value="Category">Category</option>

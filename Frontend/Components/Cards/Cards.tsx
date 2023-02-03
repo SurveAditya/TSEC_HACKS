@@ -6,7 +6,8 @@ const Cards = (props: any) => {
   const router = useRouter();
   
   const blog = props.blog;
-  // console.log(blog);
+  console.log("vaibhavvvv",blog);
+  console.log(blog?.pid);
 
   const handleClick = (e: any, id: number) => {
     e.preventDefault();
@@ -15,11 +16,11 @@ const Cards = (props: any) => {
   return (
     <div
       className="card-zoom w-full lg:max-w-full lg:flex dark:bg-gray-800 dark:border-gray-700"
-      onClick={(e) => handleClick(e, blog.title)}
+      onClick={(e) => handleClick(e, blog.productname)}
     >
       <div
         className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-        style={{ backgroundImage: `url(${blog?.img})` }}
+        style={{ backgroundImage: `url(${blog.images[0]})` }}
         title="Mountain"
       ></div>
       <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal text-gray-900 dark:text-white dark:bg-gray-800 dark:border-gray-700">
@@ -37,14 +38,15 @@ const Cards = (props: any) => {
             </p>
           )}
           <div className="text-gray-900 font-bold text-xl mb-2 dark:text-white">
-            {blog?.title}
+            {blog?.productname}
           </div>
           <p className="text-gray-700 text-base dark:text-slate-300">
-            {blog?.desc}
+            {blog?.description}
           </p>
         </div>
-        <p>Range : {blog?.rangeStart === undefined ? '0' : blog?.rangeStart} - {blog?.rangeEnd === undefined ? '0' : blog?.rangeEnd} ₹</p>
+        <p>Range : {blog?.range[0] === undefined ? '0' : blog?.range[0]} - {blog?.range[1] === undefined ? '0' : blog?.range[1]} ₹</p>
         <div className="flex items-center">
+
           <img
             className="w-10 h-10 rounded-full mr-4"
             src={"https://api.multiavatar.com/" + blog?.autherName+".svg"}
@@ -56,7 +58,7 @@ const Cards = (props: any) => {
                 {blog?.autherName}
               </p>
               <p className="text-gray-600 dark:text-slate-300">
-                {blog?.dateOfPost}
+                {blog?.createdAt}
               </p>
             </div>
           </div>

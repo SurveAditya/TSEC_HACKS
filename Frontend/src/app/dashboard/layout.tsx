@@ -19,13 +19,7 @@ export default function DashboardLayout({
   const [active, setActive] = useState(1);
   const [postCount, setPostCount] = useState(0);
 
-  useEffect(() => {
-    if (userName.length > 0) {
-      fetch(`/api/blog/myblogs?userName=${userName}`)
-        .then((res) => res.json())
-        .then((data) => setPostCount(data.length));
-    }
-  }, [userName]);
+  
 
   const path = usePathname();
   useEffect(() => {
