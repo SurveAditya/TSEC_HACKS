@@ -1,3 +1,3 @@
-# TSEC_HACKS
+# Barter
 
 Barter System where users can bart their old stuff on exchange of others old stuff.
